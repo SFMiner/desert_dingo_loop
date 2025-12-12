@@ -1,0 +1,221 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2rruej1g4u50"]
+
+[ext_resource type="Script" uid="uid://dh6rj1daq0qoc" path="res://scripts/desert_room.gd" id="1_room"]
+[ext_resource type="Script" uid="uid://c0kaksl4akqcl" path="res://scripts/creature_manager.gd" id="2_creature_mgr"]
+[ext_resource type="Script" uid="uid://dtudtjanlpsh5" path="res://scripts/SlotsContainer.gd" id="2_nq5go"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq5go"]
+bg_color = Color(0.36588982, 0.91649854, 0.58939034, 0.5529412)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.16108969, 0.47571468, 0.37620765, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="DesertRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_room")
+
+[node name="DesertBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.87, 0.72, 0.53, 1)
+
+[node name="SlotsContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171875
+anchor_top = 0.019444445
+anchor_right = 0.3046875
+anchor_bottom = 0.07777778
+theme_override_styles/panel = SubResource("StyleBoxFlat_nq5go")
+script = ExtResource("2_nq5go")
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="Button" parent="SlotsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "HIDE SLOTS"
+
+[node name="SlotGrid" type="Control" parent="SlotsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="FoodLines" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CreatureManager" type="Node2D" parent="."]
+script = ExtResource("2_creature_mgr")
+
+[node name="OrganismsContainer" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.5803922)
+z_index = 200
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DayLabel" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.2, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Day 1 of 12"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 220.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.2, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+
+[node name="MenuButton" type="Button" parent="CanvasLayer"]
+offset_left = 1160.0
+offset_top = 20.0
+offset_right = 1260.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 18
+text = "📋 Menu"
+
+[node name="SummaryPanel" type="Panel" parent="CanvasLayer"]
+offset_left = 1060.0
+offset_top = 80.0
+offset_right = 1260.0
+offset_bottom = 240.0
+
+[node name="SummaryLabel" type="Label" parent="CanvasLayer/SummaryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "🌿 Plants: 0
+🐰 Herbivores: 0
+🦊 Predators: 0
+
+📍 Empty: 20"
+
+[node name="InventoryBar" type="Panel" parent="CanvasLayer"]
+offset_left = 90.0
+offset_top = 600.0
+offset_right = 1190.0
+offset_bottom = 715.0
+
+[node name="InventoryLabel" type="Label" parent="CanvasLayer/InventoryBar"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 300.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 14
+text = "Drag organisms to place:"
+
+[node name="InventoryContainer" type="HBoxContainer" parent="CanvasLayer/InventoryBar"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 1090.0
+offset_bottom = 110.0
+theme_override_constants/separation = 20
+
+[node name="GoButton" type="Button" parent="CanvasLayer"]
+offset_left = 560.0
+offset_top = 530.0
+offset_right = 720.0
+offset_bottom = 590.0
+theme_override_font_sizes/font_size = 28
+text = "☀️ GO!"
+
+[node name="ResultsPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 440.0
+offset_top = 200.0
+offset_right = 840.0
+offset_bottom = 450.0
+
+[node name="ResultsLabel" type="Label" parent="CanvasLayer/ResultsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Day 1 Results
+
+✅ Healthy: 5
+💀 Starved: 2
+
+🏆 Points: +50"
+horizontal_alignment = 1
+
+[node name="NextDayButton" type="Button" parent="CanvasLayer/ResultsPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -55.0
+offset_right = 80.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Next Day ☀️"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="SlotsContainer/CloseButton" to="SlotsContainer" method="_on_close_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GoButton" to="." method="_on_go_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ResultsPanel/NextDayButton" to="." method="_on_next_day_button_pressed"]
