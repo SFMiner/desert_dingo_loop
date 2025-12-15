@@ -70,8 +70,9 @@ var nearby_plants: Array = []
 func _ready() -> void:
 	_setup_species()
 	_pick_new_behavior()
-	aud.stream = load("res://assets/audio/" + species + ".ogg")
-	aud.play()
+	# aud.stream = load("res://assets/audio/" + species + ".ogg")
+	
+#	aud.play()
 
 func _physics_process(delta: float) -> void:
 	state_timer -= delta

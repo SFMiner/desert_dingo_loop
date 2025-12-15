@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://organism_bubble_scene"]
+[gd_scene load_steps=5 format=3 uid="uid://ihyvohp3mesr"]
 
-[ext_resource type="Script" path="res://scripts/organism_bubble.gd" id="1_bubble"]
+[ext_resource type="Script" uid="uid://57nqm8gvtjn0" path="res://scripts/organism_bubble.gd" id="1_bubble"]
+[ext_resource type="AudioStream" uid="uid://dquiwuv51whir" path="res://assets/audio/clink.ogg" id="2_6trcy"]
+[ext_resource type="FontFile" uid="uid://dmp7y8e6c6xme" path="res://assets/emojis.tres" id="2_7wc30"]
+[ext_resource type="FontFile" uid="uid://dt3evlbxnq4pe" path="res://assets/MotleyForcesRegular-w1rZ3.ttf" id="2_28tdt"]
 
 [node name="OrganismBubble" type="Control"]
 custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 80.0
 offset_bottom = 80.0
-mouse_filter = 0
 script = ExtResource("1_bubble")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -32,7 +36,7 @@ offset_right = 30.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_7wc30")
 theme_override_font_sizes/font_size = 32
 text = "🌿"
 horizontal_alignment = 1
@@ -47,9 +51,9 @@ anchor_bottom = 1.0
 offset_top = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("2_28tdt")
+theme_override_font_sizes/font_size = 13
 text = "Spinifex"
 horizontal_alignment = 1
 
@@ -68,10 +72,11 @@ color = Color(0.2, 0.8, 0.2, 0.8)
 [node name="FoodWarning" type="Label" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 0
 offset_right = 20.0
 offset_bottom = 20.0
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "⚠️"
+
+[node name="clink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6trcy")

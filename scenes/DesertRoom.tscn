@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2rruej1g4u50"]
+[gd_scene load_steps=6 format=3 uid="uid://d2rruej1g4u50"]
 
 [ext_resource type="Script" uid="uid://dh6rj1daq0qoc" path="res://scripts/desert_room.gd" id="1_room"]
 [ext_resource type="Script" uid="uid://c0kaksl4akqcl" path="res://scripts/creature_manager.gd" id="2_creature_mgr"]
 [ext_resource type="Script" uid="uid://dtudtjanlpsh5" path="res://scripts/SlotsContainer.gd" id="2_nq5go"]
+[ext_resource type="AudioStream" uid="uid://dftagw3iokkiv" path="res://assets/audio/theme.ogg" id="4_7vkm6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq5go"]
 bg_color = Color(0.36588982, 0.91649854, 0.58939034, 0.5529412)
@@ -213,9 +214,22 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Next Day ☀️"
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1197.0
+offset_top = 290.0
+offset_right = 1257.0
+offset_bottom = 344.0
+text = "MUCIC
+OFF"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="theme_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7vkm6")
+autoplay = true
 
 [connection signal="pressed" from="SlotsContainer/CloseButton" to="SlotsContainer" method="_on_close_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GoButton" to="." method="_on_go_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ResultsPanel/NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

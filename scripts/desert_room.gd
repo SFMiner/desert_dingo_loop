@@ -14,7 +14,7 @@ const SLOT_SPACING: Vector2 = Vector2(100, 100)
 
 var OrganismBubbleScene: PackedScene = preload("res://scenes/OrganismBubble.tscn")
 var PlacementSlotScene: PackedScene = preload("res://scenes/PlacementSlot.tscn")
-
+var music_on : bool = true
 # === NODE REFERENCES ===
 
 @onready var desert_background: ColorRect = $DesertBackground
@@ -32,7 +32,7 @@ var PlacementSlotScene: PackedScene = preload("res://scenes/PlacementSlot.tscn")
 @onready var next_day_button: Button = $CanvasLayer/ResultsPanel/NextDayButton
 @onready var menu_button: Button = $CanvasLayer/MenuButton
 @onready var food_lines: Control = $FoodLines
-
+@onready var  theme_player = $theme_player
 # === STATE ===
 
 var slots: Array[PlacementSlot] = []
@@ -50,7 +50,8 @@ func _ready() -> void:
 	EcosystemState.game_over.connect(_on_game_over)
 	EcosystemState.organism_added.connect(_on_organism_added)
 	EcosystemState.organism_removed.connect(_on_organism_removed)
-	
+	if music_on: 
+		theme_player.play()
 	# Setup UI
 	_create_slot_grid()
 	_update_ui()
@@ -463,3 +464,15 @@ func hide_organisms_container():
 func show_organisms_container():
 	if organisms_container:
 		organisms_container.visible = true
+
+
+func toggle_music():
+	if music_on:
+		theme_player.stop()
+		music_on = false
+	else:
+		$theme_player.play()
+		music_on = true
+		
+func _on_button_pressed() -> void:
+	toggle_music() # Replace with function body.

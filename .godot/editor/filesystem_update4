@@ -1,9 +1,7 @@
 res://scenes/Creature.tscn
-res://scenes/DesertRoom.tscn
+res://credits.txt
 res://scripts/desert_room.gd
-res://scenes/SlotsContainer.gd
+res://scenes/DesertRoom.tscn
 res://scripts/creature.gd
-res://scripts/creature_manager.gd
-res://scenes/PlacementSlot.tscn
-res://scripts/placement_slot.gd
-res://scripts/ecosystem_constants.gd
+res://scenes/OrganismBubble.tscn
+res://scripts/audio_manager.gd

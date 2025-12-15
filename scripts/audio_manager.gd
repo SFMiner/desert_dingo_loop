@@ -9,6 +9,8 @@ extends Node
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _music_player: AudioStreamPlayer = null
 
+const place_sound : AudioStream = preload("res://assets/audio/place.ogg")
+
 const MAX_SFX_PLAYERS: int = 8
 
 # === SOUND EFFECT DEFINITIONS ===
@@ -43,7 +45,7 @@ func _generate_placeholder_sounds() -> void:
 	"""
 	# For now, sounds are just markers - actual audio files would go in assets/audio/
 	_sounds = {
-		"place": null,      # Pop sound when placing organism
+		"place": place_sound,   # Pop sound when placing organism
 		"eat": null,        # Crunch sound during simulation
 		"starve": null,     # Low whistle for dying organism
 		"success": null,    # Cheerful sound for healthy ecosystem
