@@ -1,6 +1,7 @@
-res://scenes/Creature.tscn::b93dd1e1ab6644cdf7c90abf9c8e9966::1765552459::res://.godot/exported/133200997/export-a9932832599e00e685dd696a749beac8-Creature.scn
-res://scenes/DesertRoom.tscn::13c9acf3759ff3e55eb8a9fe9cb91f99::1765552216::res://.godot/exported/133200997/export-8cc7a03d52181be935f6445384f72059-DesertRoom.scn
-res://scenes/MainMenu.tscn::b44a8e198cde373c8303cc96affaf15c::1765550973::res://.godot/exported/133200997/export-23c8b2a48d59a0cd018bd8ad5ce7794c-MainMenu.scn
-res://scenes/OrganismBubble.tscn::d6fcb3ebeb2f79fe1228ca6faaba9dd8::1765815883::res://.godot/exported/133200997/export-4299af1c5770728b7cdb68155aa6e953-OrganismBubble.scn
-res://scenes/PlacementSlot.tscn::f899eb50ffe146ec9a3633dea105760e::1765550973::res://.godot/exported/133200997/export-9bb27d94159a6609fa5b356511f5a82a-PlacementSlot.scn
-res://assets/emojis.tres::5934341f3e0dccbfee1bf47f61221df9::1765582541::res://.godot/exported/133200997/export-96d2887e72e9b99f508e7f72796726c4-emojis.res
+res://scenes/Creature.tscn::b1ad7222bb6e443e2f7bbb0f1f23de74::1765849815::res://.godot/exported/133200997/export-a9932832599e00e685dd696a749beac8-Creature.scn
+res://scenes/DesertRoom.tscn::9ce9c8ce1915fe97344aecb1314ed29a::1765850039::res://.godot/exported/133200997/export-8cc7a03d52181be935f6445384f72059-DesertRoom.scn
+res://scenes/MainMenu.tscn::1fba9710eb71426c76394e91512df3f1::1765847600::res://.godot/exported/133200997/export-23c8b2a48d59a0cd018bd8ad5ce7794c-MainMenu.scn
+res://scenes/OrganismBubble.tscn::b6acbf2795d7cf30789c64bb75d1b623::1765847114::res://.godot/exported/133200997/export-4299af1c5770728b7cdb68155aa6e953-OrganismBubble.scn
+res://scenes/PlacementSlot.tscn::f899eb50ffe146ec9a3633dea105760e::1765839039::res://.godot/exported/133200997/export-9bb27d94159a6609fa5b356511f5a82a-PlacementSlot.scn
+res://assets/emojis.tres::7fdc853763001541c79977f17984bf0f::1765839039::res://.godot/exported/133200997/export-96d2887e72e9b99f508e7f72796726c4-emojis.res
+res://scenes/Plant.tscn::43da2b6a6483c91f271f7927b692af6b::1765850932::res://.godot/exported/133200997/export-9549dba7152f9cd357df3cb049edd1ca-Plant.scn

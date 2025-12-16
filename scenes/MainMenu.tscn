@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://main_menu_scene"]
+[gd_scene load_steps=5 format=3 uid="uid://ckg6y41ig1uij"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Script" uid="uid://cpjewg0i382g3" path="res://scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://dn5axusfjcmn3" path="res://assets/sprites/new_game_icon.png" id="2_ow34m"]
+[ext_resource type="Texture2D" uid="uid://fykq7p3gwya" path="res://assets/sprites/folder.png" id="3_l72w3"]
+[ext_resource type="Texture2D" uid="uid://0v0wi7luc817" path="res://assets/sprites/desert.png" id="4_826wr"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0008702, 1)
 script = ExtResource("1_menu")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -38,8 +42,13 @@ theme_override_constants/separation = 20
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "🏜️ Desert Loop"
+text = "     Desert Loop"
 horizontal_alignment = 1
+
+[node name="Desert" type="Sprite2D" parent="VBoxContainer/Title"]
+position = Vector2(33.6131, 47.5)
+scale = Vector2(0.57422614, 0.57422614)
+texture = ExtResource("4_826wr")
 
 [node name="Subtitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -56,19 +65,28 @@ custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
-text = "🌱 New Game"
+text = "     New Game"
+
+[node name="NewGameIcon" type="Sprite2D" parent="VBoxContainer/NewGameButton"]
+position = Vector2(72.51047, 30.5)
+scale = Vector2(0.44520545, 0.44520548)
+texture = ExtResource("2_ow34m")
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
-text = "📂 Continue Game"
+text = "       Continue Game"
+
+[node name="Folder" type="Sprite2D" parent="VBoxContainer/ContinueButton"]
+position = Vector2(39.75009, 32.875)
+scale = Vector2(0.33080816, 0.3308082)
+texture = ExtResource("3_l72w3")
 
 [node name="SaveInfo" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = ""
 horizontal_alignment = 1
 
 [node name="Instructions" type="Label" parent="VBoxContainer"]

@@ -33,7 +33,7 @@ var health_status: int = EcosystemState.HealthStatus.HEALTHY
 # === NODE REFERENCES ===
 
 @onready var background: ColorRect = $Background
-@onready var icon_label: Label = $IconLabel
+@onready var icon_sprite: Sprite2D = $IconSprite
 @onready var name_label: Label = $NameLabel
 @onready var health_indicator: ColorRect = $HealthIndicator
 @onready var food_warning: Label = $FoodWarning
@@ -100,11 +100,14 @@ func _update_visuals() -> void:
 	# Background color based on organism
 	if background:
 		background.color = org_data.get("color", Color.WHITE)
-	
-	# Icon emoji
-	if icon_label:
-		icon_label.text = org_data.get("icon_char", "?")
-	
+
+	# Icon sprite
+	if icon_sprite:
+		var sprite_filename: String = org_data.get("sprite_filename", "")
+		if sprite_filename != "":
+			var sprite_path: String = "res://assets/sprites/" + sprite_filename
+			icon_sprite.texture = load(sprite_path)
+
 	# Name label
 	if name_label:
 		name_label.text = org_data.get("short_name", "???")

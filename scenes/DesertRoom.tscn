@@ -1,9 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2rruej1g4u50"]
+[gd_scene load_steps=16 format=3 uid="uid://d2rruej1g4u50"]
 
 [ext_resource type="Script" uid="uid://dh6rj1daq0qoc" path="res://scripts/desert_room.gd" id="1_room"]
 [ext_resource type="Script" uid="uid://c0kaksl4akqcl" path="res://scripts/creature_manager.gd" id="2_creature_mgr"]
 [ext_resource type="Script" uid="uid://dtudtjanlpsh5" path="res://scripts/SlotsContainer.gd" id="2_nq5go"]
+[ext_resource type="Script" uid="uid://nr2h624htr0x" path="res://scripts/plant_manager.gd" id="3_plant_mgr"]
 [ext_resource type="AudioStream" uid="uid://dftagw3iokkiv" path="res://assets/audio/theme.ogg" id="4_7vkm6"]
+[ext_resource type="Texture2D" uid="uid://n21pqjqd7j6k" path="res://assets/sprites/menu.png" id="4_eb8a1"]
+[ext_resource type="Texture2D" uid="uid://b41nmbj45ui58" path="res://assets/sprites/bilby.png" id="5_2si02"]
+[ext_resource type="Texture2D" uid="uid://be67k8elltp5d" path="res://assets/sprites/sun.png" id="5_xkt5k"]
+[ext_resource type="Texture2D" uid="uid://bfhb0020ykwwu" path="res://assets/sprites/plants.png" id="6_xpy0a"]
+[ext_resource type="Texture2D" uid="uid://da4f1ug7tl4qp" path="res://assets/sprites/fox.png" id="7_cb4v6"]
+[ext_resource type="Texture2D" uid="uid://evxycsh7jtdp" path="res://assets/sprites/lolipop.png" id="8_5pdd3"]
+[ext_resource type="Texture2D" uid="uid://de01owumpbh2e" path="res://assets/sprites/trophy.png" id="11_cag65"]
+[ext_resource type="Texture2D" uid="uid://c6vli4176iydn" path="res://assets/sprites/death.png" id="12_0poma"]
+[ext_resource type="Texture2D" uid="uid://gxbjexo48evf" path="res://assets/sprites/checkbox.png" id="13_3kr8x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq5go"]
 bg_color = Color(0.36588982, 0.91649854, 0.58939034, 0.5529412)
@@ -77,6 +87,9 @@ mouse_filter = 2
 [node name="CreatureManager" type="Node2D" parent="."]
 script = ExtResource("2_creature_mgr")
 
+[node name="PlantManager" type="Node2D" parent="."]
+script = ExtResource("3_plant_mgr")
+
 [node name="OrganismsContainer" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.5803922)
 z_index = 200
@@ -114,7 +127,12 @@ offset_top = 20.0
 offset_right = 1260.0
 offset_bottom = 60.0
 theme_override_font_sizes/font_size = 18
-text = "📋 Menu"
+text = "       Menu"
+
+[node name="Menu" type="Sprite2D" parent="CanvasLayer/MenuButton"]
+position = Vector2(22.000122, 21)
+scale = Vector2(0.10967343, 0.10967343)
+texture = ExtResource("4_eb8a1")
 
 [node name="SummaryPanel" type="Panel" parent="CanvasLayer"]
 offset_left = 1060.0
@@ -127,24 +145,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 20.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 16
-text = "🌿 Plants: 0
-🐰 Herbivores: 0
-🦊 Predators: 0
+text = "Plants: 0
+Herbivores: 0
+Predators: 0
 
-📍 Empty: 20"
+Empty: 20"
+
+[node name="Bilby" type="Sprite2D" parent="CanvasLayer/SummaryPanel"]
+position = Vector2(20.124971, 57)
+scale = Vector2(0.49038386, 0.4903838)
+texture = ExtResource("5_2si02")
+
+[node name="Plants" type="Sprite2D" parent="CanvasLayer/SummaryPanel"]
+position = Vector2(19.999979, 27.000002)
+scale = Vector2(0.23795131, 0.23795131)
+texture = ExtResource("6_xpy0a")
+
+[node name="Fox" type="Sprite2D" parent="CanvasLayer/SummaryPanel"]
+position = Vector2(21, 82)
+scale = Vector2(0.12164203, 0.12164203)
+texture = ExtResource("7_cb4v6")
+
+[node name="Lolipop" type="Sprite2D" parent="CanvasLayer/SummaryPanel"]
+position = Vector2(21, 133)
+scale = Vector2(0.07821738, 0.07821738)
+texture = ExtResource("8_5pdd3")
 
 [node name="InventoryBar" type="Panel" parent="CanvasLayer"]
-offset_left = 90.0
-offset_top = 600.0
-offset_right = 1190.0
-offset_bottom = 715.0
+offset_left = 96.0
+offset_top = 597.0
+offset_right = 1196.0
+offset_bottom = 712.0
 
 [node name="InventoryLabel" type="Label" parent="CanvasLayer/InventoryBar"]
 layout_mode = 0
@@ -169,10 +207,14 @@ offset_top = 530.0
 offset_right = 720.0
 offset_bottom = 590.0
 theme_override_font_sizes/font_size = 28
-text = "☀️ GO!"
+text = "     GO!"
+
+[node name="Sun" type="Sprite2D" parent="CanvasLayer/GoButton"]
+position = Vector2(51, 30)
+scale = Vector2(0.25454527, 0.2545453)
+texture = ExtResource("5_xkt5k")
 
 [node name="ResultsPanel" type="Panel" parent="CanvasLayer"]
-visible = false
 offset_left = 440.0
 offset_top = 200.0
 offset_right = 840.0
@@ -192,11 +234,26 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Day 1 Results
 
-✅ Healthy: 5
-💀 Starved: 2
+      Healthy: 5
+      Starved: 2
 
-🏆 Points: +50"
+      Points: +50"
 horizontal_alignment = 1
+
+[node name="Checkbox" type="Sprite2D" parent="CanvasLayer/ResultsPanel/ResultsLabel"]
+position = Vector2(129.49017, 77.00549)
+scale = Vector2(0.22106536, 0.22106536)
+texture = ExtResource("13_3kr8x")
+
+[node name="Death" type="Sprite2D" parent="CanvasLayer/ResultsPanel/ResultsLabel"]
+position = Vector2(128.84985, 107.72266)
+scale = Vector2(0.21656533, 0.21656533)
+texture = ExtResource("12_0poma")
+
+[node name="Trophy" type="Sprite2D" parent="CanvasLayer/ResultsPanel/ResultsLabel"]
+position = Vector2(127, 140.5)
+scale = Vector2(0.15757568, 0.15757567)
+texture = ExtResource("11_cag65")
 
 [node name="NextDayButton" type="Button" parent="CanvasLayer/ResultsPanel"]
 layout_mode = 1
@@ -212,7 +269,12 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
-text = "Next Day ☀️"
+text = "Next Day      "
+
+[node name="Sun" type="Sprite2D" parent="CanvasLayer/ResultsPanel/NextDayButton"]
+position = Vector2(127, 22)
+scale = Vector2(0.24756493, 0.24756493)
+texture = ExtResource("5_xkt5k")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 1197.0

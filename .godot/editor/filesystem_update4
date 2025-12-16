@@ -1,7 +1,12 @@
 res://scenes/Creature.tscn
-res://credits.txt
-res://scripts/desert_room.gd
+res://scenes/OrganismBubble.tscn
+res://scripts/ecosystem_constants.gd
+res://scripts/organism_bubble.gd
+res://scenes/MainMenu.tscn
 res://scenes/DesertRoom.tscn
 res://scripts/creature.gd
-res://scenes/OrganismBubble.tscn
-res://scripts/audio_manager.gd
+res://scripts/plant.gd
+res://scripts/desert_room.gd
+res://scenes/Plant.tscn
+res://scripts/plant_manager.gd
+res://scripts/creature_manager.gd

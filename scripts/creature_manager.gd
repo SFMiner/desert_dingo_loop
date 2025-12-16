@@ -90,7 +90,7 @@ func spawn_creature_for_organism(instance_id: int) -> Creature:
 	
 	# Create creature
 	var creature: Creature = CreatureScene.instantiate()
-	print("Spawning creature: " + str(creature.get_property_list()))
+	#print("Spawning creature: " + str(creature.get_property_list()))
 	
 	add_child(creature)
 	creature.setup(species, spawn_pos)

@@ -1,15 +1,15 @@
 [gd_scene load_steps=22 format=3 uid="uid://dre1lpdl8o8pg"]
 
 [ext_resource type="Script" uid="uid://bbyb73cmywmf1" path="res://scripts/creature.gd" id="1_ygqry"]
-[ext_resource type="Texture2D" uid="uid://pya7anuu7ahj" path="res://assets/sprites/ant-Sheet.png" id="2_0s51c"]
-[ext_resource type="Texture2D" uid="uid://cwr5trywf8pxs" path="res://assets/sprites/bilby-Sheet.png" id="3_k15pb"]
-[ext_resource type="Texture2D" uid="uid://bmvmryaqn1olt" path="res://assets/sprites/dingo_sheet.png" id="4_30bw7"]
-[ext_resource type="Texture2D" uid="uid://cxumn22dupvah" path="res://assets/sprites/eagle-Sheet.png" id="5_jdfpr"]
-[ext_resource type="Texture2D" uid="uid://cq1mlpjemekon" path="res://assets/sprites/Kangaroo-Sheet.png" id="6_2pmn8"]
-[ext_resource type="Texture2D" uid="uid://d0cn17gkkca7m" path="res://assets/sprites/Honeyeater-Sheet.png" id="6_444ob"]
-[ext_resource type="Texture2D" uid="uid://d1atxxwxht6dx" path="res://assets/sprites/sh_mouse.png" id="6_h6uyy"]
-[ext_resource type="Texture2D" uid="uid://be3vq2i8uwvr4" path="res://assets/sprites/termite-Sheet.png" id="7_dun2m"]
-[ext_resource type="Texture2D" uid="uid://bolvt2xr577vp" path="res://assets/sprites/thorny_devil-Sheet.png" id="8_atrna"]
+[ext_resource type="Texture2D" uid="uid://pya7anuu7ahj" path="res://assets/spritesheets/ant-Sheet.png" id="2_0s51c"]
+[ext_resource type="Texture2D" uid="uid://cwr5trywf8pxs" path="res://assets/spritesheets/bilby-Sheet.png" id="3_k15pb"]
+[ext_resource type="Texture2D" uid="uid://bmvmryaqn1olt" path="res://assets/spritesheets/dingo_sheet.png" id="4_30bw7"]
+[ext_resource type="Texture2D" uid="uid://cxumn22dupvah" path="res://assets/spritesheets/eagle-Sheet.png" id="5_jdfpr"]
+[ext_resource type="Texture2D" uid="uid://cq1mlpjemekon" path="res://assets/spritesheets/Kangaroo-Sheet.png" id="6_2pmn8"]
+[ext_resource type="Texture2D" uid="uid://d0cn17gkkca7m" path="res://assets/spritesheets/Honeyeater-Sheet.png" id="6_444ob"]
+[ext_resource type="Texture2D" uid="uid://d1atxxwxht6dx" path="res://assets/spritesheets/sh_mouse_Sheet.png" id="6_h6uyy"]
+[ext_resource type="Texture2D" uid="uid://be3vq2i8uwvr4" path="res://assets/spritesheets/termite-Sheet.png" id="7_dun2m"]
+[ext_resource type="Texture2D" uid="uid://bolvt2xr577vp" path="res://assets/spritesheets/thorny_devil-Sheet.png" id="8_atrna"]
 
 [sub_resource type="Animation" id="Animation_ekddt"]
 length = 0.001
@@ -432,6 +432,7 @@ _data = {
 script = ExtResource("1_ygqry")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
 scale = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -441,8 +442,8 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 offset_left = -18.0
-offset_top = 22.0
+offset_top = 2.0
 offset_right = 22.0
-offset_bottom = 45.0
+offset_bottom = 25.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

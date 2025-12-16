@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ihyvohp3mesr"]
+[gd_scene load_steps=4 format=3 uid="uid://ihyvohp3mesr"]
 
 [ext_resource type="Script" uid="uid://57nqm8gvtjn0" path="res://scripts/organism_bubble.gd" id="1_bubble"]
 [ext_resource type="AudioStream" uid="uid://dquiwuv51whir" path="res://assets/audio/clink.ogg" id="2_6trcy"]
 [ext_resource type="FontFile" uid="uid://dt3evlbxnq4pe" path="res://assets/MotleyForcesRegular-w1rZ3.ttf" id="2_28tdt"]
-
-[sub_resource type="SystemFont" id="SystemFont_28tdt"]
 
 [node name="OrganismBubble" type="Control"]
 custom_minimum_size = Vector2(80, 80)
@@ -24,24 +22,9 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.6, 0.8, 0.2, 1)
 
-[node name="IconLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -25.0
-offset_right = 30.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = SubResource("SystemFont_28tdt")
-theme_override_font_sizes/font_size = 32
-text = "🌿"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="IconSprite" type="Sprite2D" parent="."]
+position = Vector2(40, 36)
+scale = Vector2(1.2, 1.2)
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 1
@@ -52,6 +35,7 @@ anchor_bottom = 1.0
 offset_top = -20.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1, 1.3200006)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_28tdt")
 theme_override_font_sizes/font_size = 13
@@ -59,7 +43,6 @@ text = "Spinifex"
 horizontal_alignment = 1
 
 [node name="HealthIndicator" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -71,7 +54,6 @@ mouse_filter = 2
 color = Color(0.2, 0.8, 0.2, 0.8)
 
 [node name="FoodWarning" type="Label" parent="."]
-visible = false
 layout_mode = 1
 offset_right = 20.0
 offset_bottom = 20.0

@@ -32,14 +32,26 @@ var music_on : bool = true
 @onready var next_day_button: Button = $CanvasLayer/ResultsPanel/NextDayButton
 @onready var menu_button: Button = $CanvasLayer/MenuButton
 @onready var food_lines: Control = $FoodLines
-@onready var  theme_player = $theme_player
+@onready var theme_player = $theme_player
+
+@onready var trophy_icon = $CanvasLayer/ResultsPanel/ResultsLabel/Trophy
+@onready var death_skull = $CanvasLayer/ResultsPanel/ResultsLabel/Death
+
 # === STATE ===
 
 var slots: Array[PlacementSlot] = []
 var organism_bubbles: Dictionary = {}  # instance_id -> OrganismBubble
 var inventory_bubbles: Array[OrganismBubble] = []
 var dragged_bubble: OrganismBubble = null
+var dragged_bubble_inventory_index: int = -1
 var game_ended: bool = false
+
+var trophy_icon_position : Vector2
+var trophy_shift : float = 0.0
+var next_day_button_position_y : float
+var results_panel_size_y : float
+
+
 
 # === LIFECYCLE ===
 
@@ -61,6 +73,12 @@ func _ready() -> void:
 	# Hide results panel
 	results_panel.visible = false
 	game_ended = false
+	
+	trophy_icon_position = trophy_icon.position
+	next_day_button_position_y = next_day_button.position.y
+	
+	results_panel_size_y = results_panel.size.y
+	
 	
 	AudioManager.play_day_start_sound()
 
@@ -155,7 +173,10 @@ func _clear_inventory() -> void:
 func _on_bubble_drag_started(bubble: OrganismBubble) -> void:
 	"""Handle start of bubble drag."""
 	dragged_bubble = bubble
-	
+
+	# Store the original inventory index
+	dragged_bubble_inventory_index = bubble.get_index()
+
 	# Reparent to ensure it renders on top
 	var global_pos: Vector2 = bubble.global_position
 	bubble.get_parent().remove_child(bubble)
@@ -167,13 +188,13 @@ func _on_bubble_drag_ended(bubble: OrganismBubble) -> void:
 	"""Handle end of bubble drag."""
 	if dragged_bubble != bubble:
 		return
-	
+
 	# Clear all highlights
 	_clear_slot_highlights()
-	
+
 	# Find the slot under the mouse
 	var drop_slot: PlacementSlot = _get_slot_under_mouse()
-	
+
 	if drop_slot != null and drop_slot.can_accept_drop():
 		# Try to place the organism
 		if drop_slot.try_drop(bubble):
@@ -181,12 +202,34 @@ func _on_bubble_drag_ended(bubble: OrganismBubble) -> void:
 			inventory_bubbles.erase(bubble)
 			EcosystemState.use_draft_organism(bubble.organism_id)
 		else:
-			bubble.return_to_original()
+			# Failed to place - return to inventory
+			_return_bubble_to_inventory(bubble)
 	else:
-		bubble.return_to_original()
-	
+		# Not over a valid slot - return to inventory
+		_return_bubble_to_inventory(bubble)
+
 	dragged_bubble = null
 	_update_summary()
+
+
+func _return_bubble_to_inventory(bubble: OrganismBubble) -> void:
+	"""Return a bubble to the inventory container."""
+	# Reparent back to inventory container at the original index
+	var global_pos: Vector2 = bubble.global_position
+	bubble.get_parent().remove_child(bubble)
+
+	# Insert at the original position
+	inventory_container.add_child(bubble)
+	if dragged_bubble_inventory_index >= 0 and dragged_bubble_inventory_index < inventory_container.get_child_count():
+		inventory_container.move_child(bubble, dragged_bubble_inventory_index)
+
+	bubble.global_position = global_pos
+
+	# Return to original position
+	bubble.return_to_original()
+
+	# Reset the inventory index
+	dragged_bubble_inventory_index = -1
 
 
 func _on_organism_dropped(slot: PlacementSlot, organism_id: int) -> void:
@@ -267,7 +310,7 @@ func _update_summary() -> void:
 	"""Update the ecosystem summary panel."""
 	var summary: Dictionary = EcosystemState.get_ecosystem_summary()
 	
-	summary_label.text = "🌿 Plants: %d\n🐰 Herbivores: %d\n🦊 Predators: %d\n\n📍 Empty: %d" % [
+	summary_label.text = "Plants: %d\nHerbivores: %d\nPredators: %d\n\nEmpty: %d" % [
 		summary.get("producers", 0),
 		summary.get("primary_consumers", 0),
 		summary.get("secondary_consumers", 0),
@@ -351,15 +394,26 @@ func _on_simulation_complete(results: Dictionary) -> void:
 func _show_results(healthy_count: int, dead_count: int, dead_names: Array, day_score: int) -> void:
 	"""Show the results panel."""
 	var result_text: String = "Day %d Results\n\n" % EcosystemState.current_day
-	result_text += "✅ Healthy: %d\n" % healthy_count
-	
+	result_text += "     Healthy: %d\n" % healthy_count
+	trophy_shift = 0
 	if dead_count > 0:
-		result_text += "💀 Starved: %d\n" % dead_count
+		trophy_shift += 30.0
+		death_skull.visible = true
+		result_text += "     Starved: %d\n" % dead_count
 		# List the names of dead organisms
 		for dead_name in dead_names:
+			trophy_shift += 30.0
 			result_text += "   • %s\n" % dead_name
+	else:
+		death_skull.visible = false
+	trophy_icon.position = trophy_icon_position + Vector2(0, trophy_shift)
+#	next_day_button.position.y = next_day_button_position_y + (trophy_shift/2)
+	print("results_panel.size.y = " + str(results_panel.size.y))
+	print("trophy_shift = " + str(trophy_shift))
+	results_panel.size.y = results_panel_size_y + trophy_shift
+	print("results_panel.size.y = " + str(results_panel.size.y))
 	
-	result_text += "\n🏆 Points: +%d" % day_score
+	result_text += "\n     Points: +%d" % day_score
 	
 	results_label.text = result_text
 	results_panel.visible = true

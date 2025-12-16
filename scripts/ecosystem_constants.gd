@@ -63,7 +63,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [],  # Plants don't eat anything
 		"color": Color(0.6, 0.8, 0.2),  # Yellow-green
 		"description": "Tough grass that grows in clumps.",
-		"icon_char": "🌿"
+		"icon_char": "🌿",
+		"sprite_filename": "spinifex.png"
 	},
 	OrganismID.NEVERFAIL_GRASS: {
 		"id": OrganismID.NEVERFAIL_GRASS,
@@ -73,7 +74,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [],
 		"color": Color(0.5, 0.7, 0.3),  # Green
 		"description": "Hardy grass that survives drought.",
-		"icon_char": "🌾"
+		"icon_char": "🌾",
+		"sprite_filename": "neverfail.png"
 	},
 	OrganismID.STURTS_DESERT_PEA: {
 		"id": OrganismID.STURTS_DESERT_PEA,
@@ -83,7 +85,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [],
 		"color": Color(0.9, 0.2, 0.2),  # Red flower
 		"description": "Beautiful red flower of the desert.",
-		"icon_char": "🌺"
+		"icon_char": "🌺",
+		"sprite_filename": "desert_peas.png"
 	},
 	OrganismID.MULGA_TREE: {
 		"id": OrganismID.MULGA_TREE,
@@ -93,7 +96,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [],
 		"color": Color(0.4, 0.6, 0.3),  # Dark green
 		"description": "Small tree with silver-green leaves.",
-		"icon_char": "🌳"
+		"icon_char": "🌳",
+		"sprite_filename": "mulga.png"
 	},
 	OrganismID.BLOODWOOD_TREE: {
 		"id": OrganismID.BLOODWOOD_TREE,
@@ -103,7 +107,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [],
 		"color": Color(0.5, 0.4, 0.3),  # Brown-green
 		"description": "Tree with red sap like blood.",
-		"icon_char": "🌲"
+		"icon_char": "🌲",
+		"sprite_filename": "bloodwood.png"
 	},
 	
 	# === PRIMARY CONSUMERS (Herbivores/Insects) ===
@@ -115,7 +120,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRODUCER],  # Eats plants
 		"color": Color(0.3, 0.2, 0.1),  # Dark brown
 		"description": "Tiny but mighty desert worker.",
-		"icon_char": "🐜"
+		"icon_char": "🐜",
+		"sprite_filename": "ant.png"
 	},
 	OrganismID.TERMITE: {
 		"id": OrganismID.TERMITE,
@@ -125,7 +131,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRODUCER],
 		"color": Color(0.8, 0.7, 0.5),  # Tan
 		"description": "Builds tall mounds in the desert.",
-		"icon_char": "🪲"
+		"icon_char": "🪲",
+		"sprite_filename": "termite.png"
 	},
 	OrganismID.RED_KANGAROO: {
 		"id": OrganismID.RED_KANGAROO,
@@ -135,7 +142,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRODUCER],
 		"color": Color(0.8, 0.4, 0.3),  # Reddish-brown
 		"description": "Hops across the desert eating grass.",
-		"icon_char": "🦘"
+		"icon_char": "🦘",
+		"sprite_filename": "kangaroo.png"
 	},
 	OrganismID.BILBY: {
 		"id": OrganismID.BILBY,
@@ -145,7 +153,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRODUCER],
 		"color": Color(0.7, 0.6, 0.5),  # Gray-brown
 		"description": "Nocturnal digger with big ears.",
-		"icon_char": "🐰"
+		"icon_char": "🐰",
+		"sprite_filename": "bilby.png"
 	},
 	OrganismID.SPINIFEX_MOUSE: {
 		"id": OrganismID.SPINIFEX_MOUSE,
@@ -155,7 +164,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRODUCER],
 		"color": Color(0.9, 0.8, 0.6),  # Light tan
 		"description": "Tiny mouse that hops like a kangaroo.",
-		"icon_char": "🐭"
+		"icon_char": "🐭",
+		"sprite_filename": "sh_mouse.png"
 	},
 	
 	# === SECONDARY CONSUMERS (Carnivores/Omnivores) ===
@@ -167,7 +177,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRIMARY],  # Eats insects/herbivores
 		"color": Color(0.7, 0.5, 0.3),  # Sandy brown
 		"description": "Spiky lizard that loves ants.",
-		"icon_char": "🦎"
+		"icon_char": "🦎",
+		"sprite_filename": "thorny_devil.png"
 	},
 	OrganismID.HONEYEATER: {
 		"id": OrganismID.HONEYEATER,
@@ -177,7 +188,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRIMARY],
 		"color": Color(0.6, 0.5, 0.4),  # Brown
 		"description": "Bird that drinks nectar and eats bugs.",
-		"icon_char": "🐦"
+		"icon_char": "🐦",
+		"sprite_filename": "honeyeater.png"
 	},
 	OrganismID.WEDGE_TAILED_EAGLE: {
 		"id": OrganismID.WEDGE_TAILED_EAGLE,
@@ -187,7 +199,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRIMARY],  # Eats kangaroos, bilbies, etc.
 		"color": Color(0.3, 0.25, 0.2),  # Dark brown
 		"description": "Soars high, hunting from above.",
-		"icon_char": "🦅"
+		"icon_char": "🦅",
+		"sprite_filename": "eagle.png"
 	},
 	OrganismID.DINGO: {
 		"id": OrganismID.DINGO,
@@ -197,7 +210,8 @@ var ORGANISMS: Dictionary = {
 		"food_sources": [TrophicLevel.PRIMARY],  # Eats kangaroos, bilbies, mice
 		"color": Color(0.9, 0.7, 0.4),  # Sandy yellow
 		"description": "Wild dog of the Australian desert.",
-		"icon_char": "🐕"
+		"icon_char": "🐕",
+		"sprite_filename": "dingo.png"
 	}
 }
 

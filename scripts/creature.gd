@@ -76,7 +76,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	state_timer -= delta
-	
+	z_index = position.y
 	match movement_style:
 		MoveStyle.WANDER:
 			_process_wander(delta)
@@ -606,10 +606,10 @@ func _update_animation() -> void:
 #		if ap.has_animation(species):
 #			if ap.current_animation != species:
 #				ap.play(species)
-	if ap.has_animation(species):
-		print("animation " + species + " found.")
-	else:
-		print("animation " + species + " not found.")
+#	if ap.has_animation(species):
+#		print("animation " + species + " found.")
+#	else:
+#		print("animation " + species + " not found.")
 
 	ap.play(species)
 	# Flip sprite based on movement direction
